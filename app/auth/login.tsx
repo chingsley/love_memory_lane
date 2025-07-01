@@ -1,10 +1,11 @@
-import Button from '@/components/Shared/Button';
+import Form from '@/components/Auth/Form';
+import LinkToChangeForm from '@/components/Auth/LinkToChangeForm';
 import Header from '@/components/Shared/Header';
 import { colors } from '@/constants/colors';
 import { useRouter } from 'expo-router';
 
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 const Register = () => {
   const router = useRouter();
@@ -14,27 +15,11 @@ const Register = () => {
     <View style={styles.pageBox}>
       <View style={styles.container}>
         <Header caption='Sign In' />
-        <View style={styles.inputContainer}>
-          <TextInput
-            placeholder='email'
-            onChangeText={(value) => setEmail(value)}
-            placeholderTextColor={colors.MID_GRAY}
-            style={styles.textInput}
-          />
-          <TextInput
-            placeholder='Password'
-            onChangeText={(value) => setPassword(value)}
-            placeholderTextColor={colors.MID_GRAY}
-            secureTextEntry={true}
-            style={styles.textInput}
-          />
-          <Button text="Sign In" onPress={() => console.log('Sign In')} style={styles.btnRegister} />
-          <Pressable style={styles.signInLinkPressable} onPress={() => router.push('/auth/register')}>
-            <Text style={styles.signInLinkText}>
-              Already has an account? Click here to sign in
-            </Text>
-          </Pressable>
-        </View>
+        <Form type='login' onFormSubmit={() => console.log('login')} />
+        <LinkToChangeForm
+          textPrompt="Don't have an account? Click here to register"
+          onPress={() => router.push('/auth/register')}
+        />
       </View>
     </View>
   );
