@@ -27,7 +27,7 @@ const Button = ({ onPress, text, loading, disabled, style }: ButtonProps) => {
         disabled={loading || disabled}
       >
         <LinearGradient
-          colors={['#ec4899', '#8b5cf6']}
+          colors={[colors.PINK, colors.PURPLE]}
           start={{ x: 0, y: 1 }}  // Bottom-left
           end={{ x: 1, y: 0 }}    // Top-right
           style={styles.btnRegister}

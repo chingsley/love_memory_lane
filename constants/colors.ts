@@ -1,5 +1,7 @@
 export const colors = {
   WHITE: '#ffffff',
+  PINK: '#ec4899',
+  PURPLE: '#8b5cf6',
   TEXT_RED: '#ff6b9d',
 
   // gray family

@@ -50,7 +50,7 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <LinearGradient
         // colors={['#ff6b9d', '#c44569', '#f8b500']}
-        colors={['#ec4899', '#8b5cf6']}
+        colors={[colors.PINK, colors.PURPLE]}
         style={styles.hero}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}

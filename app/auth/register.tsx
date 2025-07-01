@@ -1,11 +1,13 @@
 import Button from '@/components/Shared/Button';
 import Header from '@/components/Shared/Header';
 import { colors } from '@/constants/colors';
+import { useRouter } from 'expo-router';
 
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const Register = () => {
+  const router = useRouter();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,6 +36,11 @@ const Register = () => {
             style={styles.textInput}
           />
           <Button text="register" onPress={() => console.log('register')} style={styles.btnRegister} />
+          <Pressable style={styles.signInLinkPressable} onPress={() => router.push('/auth/login')}>
+            <Text style={styles.signInLinkText}>
+              Already has an account? Click here to sign in
+            </Text>
+          </Pressable>
         </View>
       </View>
     </View>
@@ -81,6 +88,14 @@ const styles = StyleSheet.create({
   btnRegister: {
     width: '100%',
     marginTop: 20,
+  },
+  signInLinkPressable: {
+    marginTop: 20,
+  },
+  signInLinkText: {
+    fontFamily: 'roboto-bold',
+    fontSize: 18,
+    color: colors.PURPLE,
   }
 
 });

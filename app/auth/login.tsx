@@ -1,14 +1,94 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Button from '@/components/Shared/Button';
+import Header from '@/components/Shared/Header';
+import { colors } from '@/constants/colors';
+import { useRouter } from 'expo-router';
 
-const Login = () => {
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+
+const Register = () => {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
-    <View>
-      <Text>Login</Text>
+    <View style={styles.pageBox}>
+      <View style={styles.container}>
+        <Header caption='Sign In' />
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder='email'
+            onChangeText={(value) => setEmail(value)}
+            placeholderTextColor={colors.MID_GRAY}
+            style={styles.textInput}
+          />
+          <TextInput
+            placeholder='Password'
+            onChangeText={(value) => setPassword(value)}
+            placeholderTextColor={colors.MID_GRAY}
+            secureTextEntry={true}
+            style={styles.textInput}
+          />
+          <Button text="Sign In" onPress={() => console.log('Sign In')} style={styles.btnRegister} />
+          <Pressable style={styles.signInLinkPressable} onPress={() => router.push('/auth/register')}>
+            <Text style={styles.signInLinkText}>
+              Already has an account? Click here to sign in
+            </Text>
+          </Pressable>
+        </View>
+      </View>
     </View>
   );
 };
 
-export default Login;
+export default Register;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  pageBox: {
+    height: '100%'
+  },
+  container: {
+    // borderWidth: 2,
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  topImg: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
+  inputContainer: {
+    width: '90%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  authCaption: {
+    fontFamily: 'roboto',
+    fontSize: 25,
+  },
+
+  textInput: {
+    borderWidth: 1,
+    borderColor: colors.MID_GRAY,
+    width: '100%',
+    padding: 20,
+    marginTop: 20,
+    borderRadius: 8,
+    fontFamily: 'roboto',
+    fontSize: 18,
+  },
+  btnRegister: {
+    width: '100%',
+    marginTop: 20,
+  },
+  signInLinkPressable: {
+    marginTop: 20,
+  },
+  signInLinkText: {
+    color: colors.PURPLE,
+    fontFamily: 'roboto',
+    fontSize: 20,
+  }
+
+});

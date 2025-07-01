@@ -8,7 +8,7 @@ const Header = ({ caption }: { caption: string; }) => {
   return (
     <View style={styles.linearGradientBox}>
       <LinearGradient
-        colors={['#ec4899', '#8b5cf6']}
+        colors={[colors.PINK, colors.PURPLE]}
         start={{ x: 0, y: 1 }}
         end={{ x: 1, y: 0 }}
         style={styles.linearGradient}
