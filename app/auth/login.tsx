@@ -2,20 +2,43 @@ import Form from '@/components/Auth/Form';
 import LinkToChangeForm from '@/components/Auth/LinkToChangeForm';
 import Header from '@/components/Shared/Header';
 import { colors } from '@/constants/colors';
+import { localStorage } from '@/storage';
+import { FormType } from '@/types/formType';
+import { IUserData } from '@/types/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { Alert, StyleSheet, View } from 'react-native';
 
 const Register = () => {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const onLogin = async (userData: Omit<IUserData, 'fullName'>) => {
+    const userStr = await AsyncStorage.getItem(userData.email);
+    console.log(localStorage.viewAllAsyncStorageData());
+    if (!userStr) {
+      Alert.alert('Incorrect Email');
+      return;
+    }
+
+    const user: IUserData = JSON.parse(userStr);
+    if (user.password !== userData.password) {
+      Alert.alert('Incorrect Password');
+      return;
+    }
+
+    router.push({
+      pathname: '/home',
+      params: { userParam: JSON.stringify(user) }
+    });
+  };
+
   return (
     <View style={styles.pageBox}>
       <View style={styles.container}>
         <Header caption='Sign In' />
-        <Form type='login' onFormSubmit={() => console.log('login')} />
+        <Form formType={FormType.LOGIN} onFormSubmit={onLogin} />
         <LinkToChangeForm
           textPrompt="Don't have an account? Click here to register"
           onPress={() => router.push('/auth/register')}

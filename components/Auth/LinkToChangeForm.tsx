@@ -20,7 +20,10 @@ export default LinkToChangeForm;
 
 const styles = StyleSheet.create({
   signInLinkPressable: {
-    marginTop: 20,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 20,
+    // borderWidth: 1,
   },
   signInLinkText: {
     fontFamily: 'roboto-bold',
