@@ -11,4 +11,13 @@ config.resolver.unstable_enablePackageExports = false;
 // (optional but recommended) avoid symlink resolution quirks
 config.resolver.unstable_enableSymlinks = false;
 
+// Exclude test files and __mocks__ directory
+config.resolver.blockList = [/\/__mocks__\//, /\.test\.tsx$/];
+
+// Ensure console and util are resolved correctly
+config.resolver.extraNodeModules = {
+  console: require.resolve('console-browserify'),
+  util: require.resolve('util/'),
+};
+
 module.exports = config;

@@ -1,7 +1,6 @@
 import Form from '@/components/Auth/Form';
 import LinkToChangeForm from '@/components/Auth/LinkToChangeForm';
 import Header from '@/components/Shared/Header';
-import { colors } from '@/constants/colors';
 import { localStorage } from '@/storage';
 import { FormType } from '@/types/formType';
 import { IUserData } from '@/types/user';
@@ -28,6 +27,7 @@ const Register = () => {
       return;
     }
 
+    console.log(userData.email, userData.password);
     router.push({
       pathname: '/home',
       params: { userParam: JSON.stringify(user) }
@@ -61,42 +61,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  topImg: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-  },
-  inputContainer: {
-    width: '90%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  authCaption: {
-    fontFamily: 'roboto',
-    fontSize: 25,
-  },
-
-  textInput: {
-    borderWidth: 1,
-    borderColor: colors.MID_GRAY,
-    width: '100%',
-    padding: 20,
-    marginTop: 20,
-    borderRadius: 8,
-    fontFamily: 'roboto',
-    fontSize: 18,
-  },
-  btnRegister: {
-    width: '100%',
-    marginTop: 20,
-  },
-  signInLinkPressable: {
-    marginTop: 20,
-  },
-  signInLinkText: {
-    color: colors.PURPLE,
-    fontFamily: 'roboto',
-    fontSize: 20,
-  }
-
 });

@@ -18,9 +18,11 @@ export default function Index() {
         if (user) {
           const result = await getDoc(doc(db, 'users', user.email!));
           setUserDetail(result.data() as UserDetail);
-          router.replace('/newUser');
+          // router.replace('/newUser');
+          router.replace('/(tabs)/home');
         } else {
-          router.replace('/newUser');
+          // router.replace('/newUser');
+          router.replace('/(tabs)/home');
         }
       });
 

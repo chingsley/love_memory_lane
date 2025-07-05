@@ -4,7 +4,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import BackButton from './BackButton';
 
-const Header = ({ caption }: { caption: string; }) => {
+interface IHeaderProps {
+  caption: string;
+  showBackButton?: boolean;
+}
+const Header = ({ caption, showBackButton }: IHeaderProps) => {
   return (
     <View style={styles.linearGradientBox}>
       <LinearGradient
@@ -13,7 +17,7 @@ const Header = ({ caption }: { caption: string; }) => {
         end={{ x: 1, y: 0 }}
         style={styles.linearGradient}
       >
-        <BackButton style={styles.backArrow} color={colors.WHITE} />
+        {showBackButton && <BackButton style={styles.backArrow} color={colors.WHITE} />}
         <Text style={styles.pageCaption}>{caption}</Text>
       </LinearGradient>
     </View>

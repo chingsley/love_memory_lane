@@ -47,16 +47,9 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   container: {
-    // borderWidth: 2,
     height: '100%',
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  topImg: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-  },
-
 });
